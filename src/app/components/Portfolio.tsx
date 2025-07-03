@@ -11,7 +11,7 @@ export default function Portfolio() {
             <div key={index} className="work">
               <Image src={`/work-${num}.png`} alt={`work-${num}`} width={500} height={500} />
               <div className="layer">
-                <h3>{['Illustratify', 'Music App', 'Online Shop App'][index]}</h3>
+                <h3>{['FigPro', 'Music App', 'Online Shop App'][index]}</h3>
                 <p>The app connects you to the talented people around the world.</p>
                 <a
                   href={
