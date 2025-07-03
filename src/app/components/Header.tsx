@@ -9,7 +9,21 @@ export default function Header() {
     script.src = 'https://cdn.jsdelivr.net/npm/typed.js@2.0.12';
     script.async = true;
     script.onload = () => {
-      const Typed = (window as unknown as { Typed: any }).Typed;
+      // Define the expected type of the Typed constructor
+      type TypedOptions = {
+        strings: string[];
+        typeSpeed: number;
+        backSpeed: number;
+        loop: boolean;
+      };
+
+      type TypedConstructor = new (
+        element: string | Element,
+        options: TypedOptions
+      ) => { destroy: () => void };
+
+      const Typed = (window as unknown as { Typed: TypedConstructor }).Typed;
+
       if (Typed) {
         new Typed('.typing', {
           strings: [
@@ -70,8 +84,7 @@ export default function Header() {
           <h3>Hello, It&apos;s Me</h3>
           <h1 className="text-6xl mt-4 font-bold">Vivek Kumar</h1>
           <h3 className="mt-2 text-2xl md:text-3xl">
-            And I&apos;m a{' '}
-            <span className="typing text-red-500"></span>
+            And I&apos;m a <span className="typing text-red-500"></span>
           </h3>
         </div>
       </div>
